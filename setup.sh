@@ -6,6 +6,9 @@ apt install nmap -y
 apt install proxychains4 -y
 apt install netexec -y
 apt install iputils-ping -y
+apt install whatweb -y
+apt install dnsutils -y
+apt install enum4linux-ng -y
 
 cd /opt
 #Get kerbrute binary
@@ -84,3 +87,26 @@ go install github.com/sensepost/gowitness@latest
 
 apt install neovim -y
 
+# Personal Tmux Config
+cat > /root/.tmux.conf <<'TMUXCONF'
+# Core behaviour
+set -g mouse on
+set -s set-clipboard on
+setw -g mode-keys vi
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -selection clipboard -i"
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "xclip -selection clipboard -i"
+
+# Sensible defaults (replaces the tmux-sensible plugin)
+set -g default-terminal "tmux-256color"
+set -ag terminal-overrides ",xterm-256color:RGB"
+set -sg escape-time 10
+set -g history-limit 50000
+set -g display-time 2000
+set -g status-interval 5
+set -g focus-events on
+set -g base-index 1
+setw -g pane-base-index 1
+set -g renumber-windows on
+bind r source-file ~/.tmux.conf \; display-message " ~/.tmux.conf reloaded"
+TMUXCONF
