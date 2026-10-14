@@ -1,4 +1,8 @@
-#/bin/bash
+#!/bin/bash
+# Updating APT first
+apt update
+
+#Initial Tool Install
 apt install git -y
 apt install wget -y
 apt install tmux -y
