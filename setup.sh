@@ -7,6 +7,7 @@ apt install git -y
 apt install wget -y
 apt install tmux -y
 apt install nmap -y
+apt install onesixtyone -y
 apt install proxychains4 -y
 apt install netexec -y
 apt install iputils-ping -y
