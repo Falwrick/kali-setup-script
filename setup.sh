@@ -14,6 +14,7 @@ apt install iputils-ping -y
 apt install whatweb -y
 apt install dnsutils -y
 apt install enum4linux-ng -y
+apt install neovim -y
 
 cd /opt
 #Get kerbrute binary
@@ -90,7 +91,6 @@ rm go1.26.1.linux-amd64.tar.gz
 export PATH=$PATH:/root/go/bin
 go install github.com/sensepost/gowitness@latest
 
-apt install neovim -y
 
 # Personal Tmux Config
 cat > /root/.tmux.conf <<'TMUXCONF'
@@ -115,3 +115,11 @@ setw -g pane-base-index 1
 set -g renumber-windows on
 bind r source-file ~/.tmux.conf \; display-message " ~/.tmux.conf reloaded"
 TMUXCONF
+
+cat >> /root/.bashrc <<'ALIAS'
+
+# Aliases
+alias bettercap='bettercap --log ~/bettercap_$(date +%s).log'
+alias vim='nvim'
+ALIAS
+
