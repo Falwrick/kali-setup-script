@@ -116,10 +116,28 @@ set -g renumber-windows on
 bind r source-file ~/.tmux.conf \; display-message " ~/.tmux.conf reloaded"
 TMUXCONF
 
-cat >> /root/.bashrc <<'ALIAS'
-
+cat >> /root/.bashrc <<'BASHRCCONFIG'
 # Aliases
-alias bettercap='bettercap --log ~/bettercap_$(date +%s).log'
 alias vim='nvim'
-ALIAS
+alias bettercap='script -q bettercap.log -c "bettercap -iface eno1"'
 
+# ----------------------------------------------------
+# Bash History Configuration
+# ----------------------------------------------------
+
+# Timestamp history entries
+HISTTIMEFORMAT="%F %T "
+
+# Preserve history across sessions
+shopt -s histappend
+
+# Increase history retention
+HISTSIZE=100000
+HISTFILESIZE=200000
+
+# Write history before executing commands
+trap 'history -a' DEBUG
+
+# Import commands from other shells before showing the prompt
+PROMPT_COMMAND='history -n'
+BASHRCCONFIG
