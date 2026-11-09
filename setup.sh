@@ -15,6 +15,7 @@ apt install whatweb -y
 apt install dnsutils -y
 apt install enum4linux-ng -y
 apt install neovim -y
+apt install evil-winrm -y
 
 cd /opt
 #Get kerbrute binary
@@ -91,6 +92,9 @@ rm go1.26.1.linux-amd64.tar.gz
 export PATH=$PATH:/root/go/bin
 go install github.com/sensepost/gowitness@latest
 
+# Downloading custom TMUX Window Export Script
+cd /root
+wget https://raw.githubusercontent.com/Falwrick/Public-Scripts/refs/heads/main/tmuxDump.sh
 
 # Personal Tmux Config
 cat > /root/.tmux.conf <<'TMUXCONF'
