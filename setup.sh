@@ -4,6 +4,9 @@ apt update
 
 #Initial Tool Install
 apt install git -y
+apt install ncdu -y
+apt install rsync -y
+apt install gpg -y
 apt install wget -y
 apt install tmux -y
 apt install nmap -y
